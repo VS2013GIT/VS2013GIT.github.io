@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>WildScientist的网站</title>
-        <link rel="icon" href="/favicon.ico" type="image/x-ico">
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-        <audio controls>
+<head>
+    <meta charset="utf-8">
+    <title>WildScientist的网站</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <audio controls>
         <source src="BGMs/mainPage.mp3" type="audio/mpeg">
         音乐播放失败
-        </audio>
-  
-    </head>
-    <body>
-        <h1 style="text-align:center;font-weight: bolder;">WildScientist的网站</h1>
-        <p style="font-weight: bolder;">页面测试，lastest update at 12:35PM 6/24/2020</p>
-        <p style="font-weight: bolder;">敬请期待新的内容</p>
-        <img src="Images/cat1.jpg" height="500" />
-    </body>
+    </audio>
+
+</head>
+
+<body>
+    <h1 style="text-align:center;font-weight: bolder;">WildScientist的网站</h1>
+    <p style="font-weight: bolder;">页面测试，lastest update at 12:35PM 6/24/2020</p>
+    <p style="font-weight: bolder;">敬请期待新的内容</p>
+    <img src="Images/cat1.jpg" height="500" />
+
+
+    <!-- <form action="https://formspree.io/mdowlbwa" method="POST">
+            <input type="text" name="name">
+            <input type="hidden" name="_replyto" value="123@qq.com">
+            <input type="submit" value="提交">
+          </form>
+        -->
+
+
+    <input id="input" name="name" type="text">
+    <input type="submit" value="提交" onclick='go()'>
+    <script>
+        function go()
+        {
+            const text = document.getElementById('input').value
+            let formData = new FormData()
+            formData.append('name', text)
+            formData.append('email', '123@qq.com')
+            const req = new XMLHttpRequest()
+            req.onreadystatechange = function ()
+            {
+                if (req.readyState === 4)
+                {
+                    const response = JSON.parse(req.responseText)
+                    if (response.code === '200')
+                    {
+                        console.log('success')
+                    } else
+                    {
+                        console.log('fail')
+                    }
+                }
+            }
+            req.open('post', 'https://formspree.io/mdowlbwa', true)
+            req.send(formData)
+        }
+    </script>
+
+</body>
+
 </html>
