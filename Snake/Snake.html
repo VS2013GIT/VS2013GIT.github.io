@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <mate charset='utf-8'></mate>
+    <meta name='viewport' content='width=device-width, user-scalable=0'>
+    <title>贪吃蛇</title>
+
+</head>
+
+<body style='position: absolute;width: 100%;height: 100%;'>
+
+    <div id=mainDiv style='position: absolute;left:50%;top:50%;
+    transform: translate(-50%,-50%);'>
+        <div>
+            最好成绩:<span id='best'></span>目前得分:<span id='score'></span>目前用时:<span id='duration'></span>移动频率:<span
+                id='flashTime'></span>
+        </div>
+        <canvas id='canvas' style='border: 4px solid red;background-color: beige;'></canvas>
+        <!---  <canvas id='canvas' style='border: 4px solid red;background-color: beige;'></canvas> -->
+    </div>
+    <div onclick='toggleFullScreen();'>全屏</div>
+</body>
+
+<script>
+    const MAPCOLOR = 'beige';
+    const SNAKECOLOR = 'red';
+    const BORDERCOLOR = 'red';
+
+    const LINEWIDTH = 10;
+    const STEP = 10;
+    const FLASHTIME = 100;
+
+
+    var mapLen;
+    var flashTime;
+    var score;
+    var duration;
+
+
+    var body;
+    var cakePos;
+    var ctx = document.getElementById("canvas").getContext("2d");
+
+    function division(div, unit) //用于将长度控制到step的整数倍
+    {
+        return parseInt(div / unit) * unit;
+    }
+    function isBetweenTwoPoint(point3, point1, point2)
+    {
+        let x1 = Math.min(point1.x, point2.x);
+        let x2 = Math.max(point1.x, point2.x);
+        let y1 = Math.min(point1.y, point2.y);
+        let y2 = Math.max(point1.y, point2.y);
+        let x0 = point3.x;
+        let y0 = point3.y;
+        if (x1 <= x0 && x0 <= x2 && y1 <= y0 && y0 <= y2) return true;
+        else return false;
+    }
+    function initialize()
+    {
+        !function initializeMap()
+        {
+            mapLen = parseInt(0.9 * Math.min(document.body.clientWidth, document.body.clientHeight));
+            mapLen = division(mapLen, STEP);
+            document.getElementById('canvas').height = mapLen;
+            document.getElementById('canvas').width = mapLen;
+            ctx.lineWidth = LINEWIDTH;
+        }()
+
+        !function initializeData()
+        {
+            body = new Array();
+            score = 0;
+            duration = 0;
+            flashTime = FLASHTIME;
+            cakePos = { x: 0, y: 0 };
+            var head = { x: 150, y: 100, direction: 'up' };
+            var tail = { x: 150, y: 300, direction: 'up' };
+
+            body.push(head);
+            body.push(tail);
+        }()
+
+        setCake();
+    }
+
+    function isCrash() 
+    {
+        if (body[0].x >= mapLen || body[0].x <= 0 || body[0].y >= mapLen || body[0].y <= 0) return true;
+        for (let i = 1; i < body.length - 1; i++)
+        {
+            if (isBetweenTwoPoint(body[0], body[i], body[i + 1]) == true) return true;
+        }
+    }
+
+    function isGetCake()
+    {
+        for (let i = 0; i < body.length - 1; i++)
+        {
+            if (isBetweenTwoPoint(cakePos, body[i], body[i + 1]) == true) return true;
+        }
+        return false;
+    }
+
+    function setCake()
+    {
+        document.getElementById('flashTime').innerHTML = flashTime + 'ms';
+        document.getElementById('score').innerHTML = score;
+        do
+        {
+            cakePos.x = division((STEP + (parseInt(Math.random() * 10000)) % (mapLen - 2 * STEP)), STEP);
+            cakePos.y = division((STEP + (parseInt(Math.random() * 10000)) % (mapLen - 2 * STEP)), STEP);
+        } while (isGetCake() == true);
+
+        ctx.beginPath();
+        ctx.moveTo(cakePos.x - STEP / 2, cakePos.y);
+        ctx.lineTo(cakePos.x + STEP / 2, cakePos.y);
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+    }
+
+    function lengthen()
+    {
+        switch (body[body.length - 1].direction)
+        {
+            case 'up':
+                body[body.length - 1].y += STEP;
+                break;
+            case 'down':
+                body[body.length - 1].y -= STEP;
+                break;
+            case 'left':
+                body[body.length - 1].x += STEP;
+                break;
+            case 'right':
+                body[body.length - 1].x -= STEP;
+                break;
+        }
+    }
+
+    function move()
+    {
+
+        if (body[body.length - 1].x == body[body.length - 2].x && body[body.length - 1].y == body[body.length - 2].y)
+            body.pop();
+        //先擦除
+        ctx.beginPath();
+        ctx.strokeStyle = MAPCOLOR;
+        ctx.moveTo(body[0].x, body[0].y);
+        body.forEach((item) =>
+        {
+            ctx.lineTo(item.x, item.y);
+        }
+        )
+        ctx.stroke();
+        //移动
+        switch (body[0].direction)
+        {
+            case 'up':
+                body[0].y -= STEP;
+                break;
+            case 'down':
+                body[0].y += STEP;
+                break;
+            case 'left':
+                body[0].x -= STEP;
+                break;
+            case 'right':
+                body[0].x += STEP;
+                break;
+        }
+        switch (body[body.length - 1].direction)
+        {
+            case 'up':
+                body[body.length - 1].y -= STEP;
+                break;
+            case 'down':
+                body[body.length - 1].y += STEP;
+                break;
+            case 'left':
+                body[body.length - 1].x -= STEP;
+                break;
+            case 'right':
+                body[body.length - 1].x += STEP;
+                break;
+        }
+        //再绘制
+        ctx.beginPath();
+        ctx.moveTo(body[0].x, body[0].y);
+        ctx.strokeStyle = SNAKECOLOR;
+        body.forEach((item) =>
+        {
+            ctx.lineTo(item.x, item.y);
+        }
+        )
+        ctx.stroke();
+
+        if (isCrash() == true)
+        {
+            alert('游戏结束');
+            initialize();
+            clearInterval(moveThread);
+            moveThread=setInterval(move, flashTime);
+        }
+        if (isGetCake() == true)
+        {
+            if (flashTime > 90) 
+            {
+                flashTime -= 5;
+                clearInterval(moveThread);
+                moveThread=setInterval(move, flashTime);
+            }
+            score += 5;
+            lengthen();
+            setCake();
+           
+        }
+    }
+
+
+
+
+
+    function keyboardThread()
+    {
+        document.onkeydown = keyDown;
+        function keyDown(e)
+        {
+            var head = Object.assign({}, body[0]);
+            if (body[0].x == body[1].x && body[0].y == body[1].y) return false;
+            switch (event.keyCode)
+            {  // 获取当前按下键盘键的编码
+                case 37:  // 按下左箭头键，向左移动5个像素
+                    if (body[0].direction != 'left' && body[0].direction != 'right')
+                    {
+                        head.direction = 'left';
+                        body[0].direction = 'left';
+                        body.unshift(head);
+                    }
+                    break;
+                case 39:  // 按下右箭头键，向右移动5个像素
+                    if (body[0].direction != 'left' && body[0].direction != 'right')
+                    {
+                        head.direction = 'right';
+                        body[0].direction = 'right';
+                        body.unshift(head);
+                    }
+                    break;
+                case 38:  // 按下上箭头键，向上移动5个像素
+                    if (body[0].direction != 'up' && body[0].direction != 'down')
+                    {
+                        head.direction = 'up';
+                        body[0].direction = 'up';
+                        body.unshift(head);
+                    }
+                    break;
+                case 40:  // 按下下箭头键，向下移动5个像素
+                    if (body[0].direction != 'up' && body[0].direction != 'down')
+                    {
+                        head.direction = 'down';
+                        body[0].direction = 'down';
+                        body.unshift(head);
+                    }
+                    break;
+            }
+            return false
+        }
+    }
+
+    function showDuration()
+    {
+        document.getElementById('duration').innerHTML = (duration / 1000).toFixed(2) + 's';
+        duration += flashTime;
+    }
+
+
+    initialize();
+
+    var moveThread = setInterval(move, flashTime);
+    setInterval(showDuration, flashTime);
+
+
+
+    keyboardThread();
+
+</script>
+
+
+</html>
