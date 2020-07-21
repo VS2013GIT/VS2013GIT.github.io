@@ -1,0 +1,52 @@
+ <!-- <span style=' float:left;position: relative;width:30%;border:1px solid red'>
+       66666
+    </span>
+
+    <span style='border:1px solid green'>
+        666
+    </span>
+    -->
+
+    <!--
+        <p style="font-weight: bolder;">页面测试，lastest update at 12:35PM 6/24/2020</p>
+    <p style="font-weight: bolder;">敬请期待新的内容</p>
+    <img src="Images/cat1.jpg" height="500" />
+-->
+
+
+       <!-- <audio controls>
+        <source src="BGMs/mainPage.mp3" type="audio/mpeg">
+        音乐播放失败
+    </audio>-->
+
+
+    <!-- 
+    <input id="input" name="name" type="text">
+    <input type="submit" value="提交" onclick='go()'>
+    <script>
+        function go()
+        {
+            const text = document.getElementById('input').value
+            let formData = new FormData()
+            formData.append('name', text)
+            formData.append('email', '123@qq.com')
+            const req = new XMLHttpRequest()
+            req.onreadystatechange = function ()
+            {
+                if (req.readyState === 4)
+                {
+                    const response = JSON.parse(req.responseText)
+                    if (response.code === '200')
+                    {
+                        console.log('success')
+                    } else
+                    {
+                        console.log('fail')
+                    }
+                }
+            }
+            req.open('post', 'https://formspree.io/mdowlbwa', true)
+            req.send(formData)
+        }
+    </script>
+-->

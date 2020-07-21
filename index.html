@@ -1,83 +1,159 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>WildScientist的网站</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-ico">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        ul {
+            margin: 0;
+        }
+
+        body {
+            background-color: #ebebeb;
+        }
+
+        #headerBox {
+            /* display:flex;*/
+            height: 60px;
+            background-color: white;
+        }
+
+        #headerBox-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        #gap {
+            height: 10px;
+        }
+
+        #mainContentBox {
+            background-color: white;
+
+        }
+
+        .contentBox {
+            padding: 15px 0 14px;
+            margin: 0 15px;
+            border-bottom: .5px solid #d3d3d3;
+        }
+
+        .contentBox .title {
+            font-weight: 600;
+            font-size: 20px;
+            color: #1a1a1a;
+            line-height: 22px;
+
+        }
+
+        .contentBox .abstractBox {
+            padding-top: 9px;
+            font-size: 15px;
+            width: 100%;
+
+        }
+        .contentBox .date {
+            font-size: 15px;
+            color: #999;
+            padding-top: 9px;
+
+        }
+    </style>
+
 </head>
 
-<body>
-    <h1 style="text-align:center;font-weight: bolder; border:1px solid blue">WildScientist的网站</h1>
+<html>
 
-    <div id='sideBarBox' style=' float:left;width:20%;border:1px solid red'>
-        <div id='cat' style='background-image:url("Images/cat1.jpg") ;background-repeat: no-repeat;background-size: cover;height: 600px;'>
+<body>
+    <div id="headerBox">
+        <p id="headerBox-title">WildScientist的主页</p>
+    </div>
+
+    <div id="gap"></div>
+
+    <div id="mainContentBox">
+        <div class="contentBox">
+            <div class="title">
+                你好
+            </div>
+            <div class="abstractBox">
+                <div class="abstract">
+                    欢迎来我的网站
+                </div>
+            </div>
+
+            <div class="date">
+                2020/12/46
+            </div>
 
         </div>
-
-        
     </div>
 
-    <div id='contentBox' style=' float:right;width:60%;border:1px solid red'>
-        <a href='Snake/Snake.html'>贪吃蛇内测版----Coded by WildScientist</a>
+    <div id="mainContentBox">
+        <div class="contentBox">
+            <div class="title">
+                你好
+            </div>
+            <div class="abstractBox">
+                <div class="abstract">
+                    欢迎来我的网站
+                </div>
+            </div>
+
+            <div class="date">
+                2020/12/46
+            </div>
+
+        </div>
     </div>
 
-    
-   <!-- <span style=' float:left;position: relative;width:30%;border:1px solid red'>
-       66666
-    </span>
+    <div id="mainContentBox">
+        <div class="contentBox">
+            <div class="title">
+                你好
+            </div>
+            <div class="abstractBox">
+                <div class="abstract">
+                    欢迎来我的网站
+                </div>
+            </div>
 
-    <span style='border:1px solid green'>
-        666
-    </span>
-    -->
+            <div class="date">
+                2020/12/46
+            </div>
 
-    <!--
-        <p style="font-weight: bolder;">页面测试，lastest update at 12:35PM 6/24/2020</p>
-    <p style="font-weight: bolder;">敬请期待新的内容</p>
-    <img src="Images/cat1.jpg" height="500" />
--->
+        </div>
+    </div>
 
+    <div id="mainContentBox">
+        <div class="contentBox">
+            <div class="title">
+                你好
+            </div>
+            <div class="abstractBox">
+                <div class="abstract">
+                    欢迎来我的网站
+                </div>
+            </div>
 
-       <!-- <audio controls>
-        <source src="BGMs/mainPage.mp3" type="audio/mpeg">
-        音乐播放失败
-    </audio>-->
+            <div class="date">
+                2020/12/46
+            </div>
 
-
-    <!-- 
-    <input id="input" name="name" type="text">
-    <input type="submit" value="提交" onclick='go()'>
-    <script>
-        function go()
-        {
-            const text = document.getElementById('input').value
-            let formData = new FormData()
-            formData.append('name', text)
-            formData.append('email', '123@qq.com')
-            const req = new XMLHttpRequest()
-            req.onreadystatechange = function ()
-            {
-                if (req.readyState === 4)
-                {
-                    const response = JSON.parse(req.responseText)
-                    if (response.code === '200')
-                    {
-                        console.log('success')
-                    } else
-                    {
-                        console.log('fail')
-                    }
-                }
-            }
-            req.open('post', 'https://formspree.io/mdowlbwa', true)
-            req.send(formData)
-        }
-    </script>
--->
-
+        </div>
+    </div>
 
 </body>
 
 </html>
+    
+  
