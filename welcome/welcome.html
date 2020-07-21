@@ -37,14 +37,18 @@
 
         window.addEventListener('load', function ()
         {
-            for (var i = 0; i < spans.length; i++)
+           setTimeout( function()
             {
-                doSetTimeout(i);
-            }
-            document.body.addEventListener("touchstart", function ()
-            {
-                window.location.href = "../mainPage/mainPage.html"
-            });
+                for (var i = 0; i < spans.length; i++)
+                {
+                    doSetTimeout(i);
+                }
+                document.body.addEventListener("touchstart", function ()
+                {
+                    window.location.href = "../mainPage/mainPage.html"
+                });
+            },500);
+
         })
 
     </script>
