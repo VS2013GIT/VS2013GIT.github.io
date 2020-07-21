@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+    <title>WildScientist的网站</title>
+</head>
+
+<body>
+
+    <div class="contentBox">
+		<span class="line1 a">你</span>
+		<span class="line1 b">好</span>
+		<br>
+		<span class="line2">欢</span>
+		<span class="line2">迎</span>
+		<span class="line2">来</span>
+		<span class="line2">我</span>
+		<span class="line2">的</span>
+		<span class="line2">网</span>
+		<span class="line2">站</span>
+	</div>
+
+	<script>
+        var spans = document.getElementsByTagName('span');
+        const DELAY=300;
+
+		function doSetTimeout(i) 
+		{
+			setTimeout(function ()
+			{
+				spans[i].classList += " action";
+			}, DELAY * i);
+		}
+
+		window.addEventListener('load', function () 
+		{
+			for (var i = 0; i < spans.length; i++) 
+			{
+				doSetTimeout(i);
+            }
+            setTimeout(function ()
+			{
+				window.location.href="..//mainPage//mainPage.html";
+			}, DELAY * (spans.length+2))
+		})
+	</script>
+
+</body>
+
+</html>

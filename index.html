@@ -1,159 +1,33 @@
 <!DOCTYPE html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
-
-    <style>
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        p,
-        ul {
-            margin: 0;
-        }
-
-        body {
-            background-color: #ebebeb;
-        }
-
-        #headerBox {
-            /* display:flex;*/
-            height: 60px;
-            background-color: white;
-        }
-
-        #headerBox-title {
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-            padding: 10px;
-        }
-
-        #gap {
-            height: 10px;
-        }
-
-        #mainContentBox {
-            background-color: white;
-
-        }
-
-        .contentBox {
-            padding: 15px 0 14px;
-            margin: 0 15px;
-            border-bottom: .5px solid #d3d3d3;
-        }
-
-        .contentBox .title {
-            font-weight: 600;
-            font-size: 20px;
-            color: #1a1a1a;
-            line-height: 22px;
-
-        }
-
-        .contentBox .abstractBox {
-            padding-top: 9px;
-            font-size: 15px;
-            width: 100%;
-
-        }
-        .contentBox .date {
-            font-size: 15px;
-            color: #999;
-            padding-top: 9px;
-
-        }
-    </style>
-
-</head>
-
 <html>
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
+    <meta charset="utf-8"/>
+    
+    <title>WildScientist的网站</title>
+</head>
+
 <body>
-    <div id="headerBox">
-        <p id="headerBox-title">WildScientist的主页</p>
-    </div>
-
-    <div id="gap"></div>
-
-    <div id="mainContentBox">
-        <div class="contentBox">
-            <div class="title">
-                你好
-            </div>
-            <div class="abstractBox">
-                <div class="abstract">
-                    欢迎来我的网站
-                </div>
-            </div>
-
-            <div class="date">
-                2020/12/46
-            </div>
-
-        </div>
-    </div>
-
-    <div id="mainContentBox">
-        <div class="contentBox">
-            <div class="title">
-                你好
-            </div>
-            <div class="abstractBox">
-                <div class="abstract">
-                    欢迎来我的网站
-                </div>
-            </div>
-
-            <div class="date">
-                2020/12/46
-            </div>
-
-        </div>
-    </div>
-
-    <div id="mainContentBox">
-        <div class="contentBox">
-            <div class="title">
-                你好
-            </div>
-            <div class="abstractBox">
-                <div class="abstract">
-                    欢迎来我的网站
-                </div>
-            </div>
-
-            <div class="date">
-                2020/12/46
-            </div>
-
-        </div>
-    </div>
-
-    <div id="mainContentBox">
-        <div class="contentBox">
-            <div class="title">
-                你好
-            </div>
-            <div class="abstractBox">
-                <div class="abstract">
-                    欢迎来我的网站
-                </div>
-            </div>
-
-            <div class="date">
-                2020/12/46
-            </div>
-
-        </div>
-    </div>
+    <script>
+        function isPC()
+        {
+            var userAgentInfo = navigator.userAgent;
+            var agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            var flag = true;
+            for (var i = 0; i < agents.length; i++)
+                if (userAgentInfo.indexOf(agents[i]) > 0)
+                return false;
+            return true;
+        }
+        if(isPC()==true)
+            document.body.innerHTML+="电脑端网页尚未完成，请使用手机访问。。。。。。@_@ ";
+        else
+            window.location.href="welcome\\welcome.html";
+    </script>
 
 </body>
 
 </html>
-    
-  
