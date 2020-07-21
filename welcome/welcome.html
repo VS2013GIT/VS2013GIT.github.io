@@ -35,19 +35,12 @@
             }, DELAY * i);
         }
 
-        window.addEventListener('load', setTimeout(function ()
-        {
-            for (var i = 0; i < spans.length; i++)
-            {
+        window.addEventListener('load', setTimeout(function (){
+            for (var i = 0; i < spans.length; i++) {
                 doSetTimeout(i);
-            }
-            setTimeout(function ()
-            {
-                window.location.href = "../mainPage/mainPage.html";
-            }, DELAY * (spans.length + 5));
-
-        }, 700)
-        )
+            document.body.addEventListener("touchstart",function{window.location.href="../mainPage/mainPage.html"});
+            }}, 700))
+        
     </script>
 
 </body>
