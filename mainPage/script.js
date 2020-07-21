@@ -10,7 +10,7 @@ function getCookie(name)
     }
     return null;
 }
-console.log(getCookie("screenLine"));
+
 if(getCookie("screenLine")!=null)
 {
     let screenLine=document.createElement("div");
@@ -21,6 +21,20 @@ if(getCookie("screenLine")!=null)
 document.getElementById("content4").addEventListener("click",function()
 {
     document.location.href="../screenTest/screenTest.html";
+   
 })
 
-
+document.body.addEventListener("click",function()
+{
+    var element=document.documentElement;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    }
+}
+)
