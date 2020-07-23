@@ -24,31 +24,25 @@
     </div>
 
     <script>
+
         var spans = document.getElementsByTagName('span');
+        var i = 0;
         const DELAY = 250;
 
-        function doSetTimeout(i) 
+        function action()
         {
-            setTimeout(function ()
-            {
-                spans[i].classList += " action";
-            }, DELAY * i);
+            spans[i++].classList += " action";
+            if(i==2)return setTimeout(action,2000);
+            if(i<spans.length)return setTimeout(action,DELAY);
+            if(spans.length)return document.body.addEventListener("touchstart", function ()
+                {
+                    window.location.href = "../mainPage/mainPage.html"
+                });
         }
 
         window.addEventListener('load', function ()
         {
-           setTimeout( function()
-            {
-                for (var i = 0; i < spans.length; i++)
-                {
-                    doSetTimeout(i);
-                }
-                document.body.addEventListener("touchstart", function ()
-                {
-                    window.location.href = "../mainPage/mainPage.html"
-                });
-            },500);
-
+            setTimeout(action, 500);
         })
 
     </script>
