@@ -24,24 +24,8 @@ document.getElementById("content4").addEventListener("click",function()
    
 })
 
-document.body.addEventListener("click",function()
-{
-    var element=document.documentElement;
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-    }
-}
-)
-
-document.oncontextmenu=new Function("event.returnValue=false");  
-document.onselectstart=new Function("event.returnValue=false");  
-
+document.oncontextmenu=function(event){event.returnValue=false};
+document.onselectstart=function(event){event.returnValue=false};
 
 var draw = document.getElementById("coordination").getContext("2d");
 draw.translate(150,150);
