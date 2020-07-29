@@ -23,9 +23,15 @@ document.getElementById("content4").addEventListener("click",function()
     document.location.href="../screenTest/screenTest.html";
    
 })
+document.getElementById("content3").addEventListener("click",function()
+{
+    document.location.href="../astronomia/index.html";
+   
+})
 
 document.oncontextmenu=function(event){event.returnValue=false};
 document.onselectstart=function(event){event.returnValue=false};
+
 
 var draw = document.getElementById("coordination").getContext("2d");
 draw.translate(150,150);
