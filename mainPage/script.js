@@ -29,6 +29,7 @@ document.getElementById("content3").addEventListener("click",function()
    
 })
 
+
 document.oncontextmenu=function(event){event.returnValue=false};
 document.onselectstart=function(event){event.returnValue=false};
 
