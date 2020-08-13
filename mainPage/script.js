@@ -28,6 +28,11 @@ document.getElementById("content3").addEventListener("click",function()
     document.location.href="../astronomia/index.html";
    
 })
+document.getElementById("content2").addEventListener("click",function()
+{
+    document.location.href="../snake/snakePhone.html";
+   
+})
 
 
 document.oncontextmenu=function(event){event.returnValue=false};
