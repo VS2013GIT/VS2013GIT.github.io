@@ -3,3 +3,5 @@ wx2003db76e965686f
 APPSECRET
 3ad9f2cab5a0d5cf3a0fe07d723388f3
 https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2003db76e965686f&secret=3ad9f2cab5a0d5cf3a0fe07d723388f3
+
+https://api.weixin.qq.com/tcb/invokecloudfunction?access_token=36_7ZwXt5k4boLq3lKM9WQaO-W1vST8yxi4r2Z_UhM4hyhSMDmuiSDe4Zop2sF9k4u-2Fin6bMxXHtYOFGN-DCalTtH-i7IhUwYMUjpyBUIkSKnAO2w712JLTPjakqUoxFtmgSdaQeYXAXPn5yfAELgAGAJNU&env=mypage-j423a&name=login

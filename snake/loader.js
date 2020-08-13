@@ -21,7 +21,7 @@ function load(sources)
 }
 
 
-window.addEventListener("load",load(["snakeEngine.js","mainPage.js"]));
+window.addEventListener("load",load(["snakeEngine.js","menu.js"]));
 
 
 

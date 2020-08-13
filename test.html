@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WildScientist的网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
+    <meta charset="utf-8" />
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"> </script>
+</head>
+
+
+<body>
+    <table id="records" border="1" cellspacing="0">
+        <tr>
+            <th>排名</th>
+            <th>得分</th>
+            <th>用时</th>
+            <th>留言</th>
+            <th>提交时间</th>
+        </tr>
+        </tbale>
+
+        <script>
+            function updateTable(records)
+            {
+                let table = document.getElementById("records");
+                let rows = table.rows;
+                const PLAYERS=4;
+                for (let i = 1; i <= PLAYERS; i++)
+                {
+                    let row=table.insertRow(rows.length);
+                    row.insertCell(0).innerHTML=records.records[i-1].updatedAt;
+                    row.insertCell(0).innerHTML=records.records[i-1].comment;
+                    row.insertCell(0).innerHTML=records.records[i-1].duration;
+                    row.insertCell(0).innerHTML=records.records[i-1].scores;
+                    row.insertCell(0).innerHTML=i;
+                }
+            }
+            
+             AV.init(
+              {
+                  appId: "6Wp9wY2U2q4JOI0D2ruVtUg4-MdYXbMMI",
+                  appKey: "1e7Cqw4sPQpcIK7s6zYMvxyn"
+              });
+
+              localStorage.setItem('debug', 'leancloud*');
+
+
+              AV.Cloud.run('getRecords').then(
+                  function(data)
+                  {
+                     updateTable(data);
+                     console.log(data);
+                  },
+                  function(error)
+                  {
+                      console.log("wrong");
+                  });
+        </script>
+</body>
+
+</html>

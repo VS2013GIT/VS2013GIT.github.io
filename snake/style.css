@@ -50,10 +50,33 @@ canvas
     background-color: #ece7e7;
     border: 2px solid red;
     box-shadow: 0 1px 10px #3e3e3e;
-    margin-left: 10px;
-    margin-right: 10px;
     font-size: 0;
 }
+
+#gameArea div
+{
+
+    text-align:center;
+    color: rgba(0, 89, 255, 0.884);  
+    /*-webkit-text-stroke: 3px royalblue;*/
+}
+
+#gameArea .titleChinese
+{
+    margin-top:40px;
+    font-size: 40px;
+}
+#gameArea .titleEnglish
+{
+    font-size: 30px;
+}
+
+#gameArea .mode div
+{
+    margin-top:20px;
+    font-size:30px;
+}
+
 
 #controlPannel {
     display: grid;
@@ -67,6 +90,9 @@ canvas
 
 .controlButton
 {
+    text-align:center;
+    font-size: 20px;
+    font-weight: bold;
     background-color: #fa5a5a;
     box-shadow: 0px 8px 0px #E04342;
     margin:10px;
