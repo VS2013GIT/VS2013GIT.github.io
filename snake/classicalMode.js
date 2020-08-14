@@ -23,6 +23,7 @@ function GameDatas()
     this.scores=0;
     this.duration=0;
     this.flashTime=200;
+    this.scoresDiv=document.getElementById("scores");
     this.durationDiv=document.getElementById("duration");
     this.flashTimeDiv=document.getElementById("flashTime");
     
