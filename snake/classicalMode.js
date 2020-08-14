@@ -90,7 +90,6 @@ function round()
         gameDatas.saveBestRecord();
         alert("游戏结束");
     }
-    
 }
 
 let loop=setInterval(round,gameDatas.flashTime);

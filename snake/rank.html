@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WildScientist的网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
+    <meta charset="utf-8" />
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"> </script>
+</head>
+
+<body>
+    <table id="records" border="1" cellspacing="0">
+        <tr>
+            <th>排名</th>
+            <th>得分</th>
+            <th>用时</th>
+            <th>留言</th>
+            <th>提交时间</th>
+        </tr>
+    </table>
+    
+    <input id="comment" type="text" value="留言" /> 
+    <input id="submit" type="submit" value="提交" />
+    <div>
+        1.排名只显示前五名
+        2.有关键字过滤
+    </div>
+    
+</body>
+<script>
+    function submit(rank)
+    {
+        let comment=document.getElementById("comment").value;
+        bestRecord.comment=comment;
+        if(rank==undefined)
+        {
+            alert("排名加载失败");
+            return;
+        }
+        if(bestRecord.scores<rank[rank.length-1].scores)
+        {
+            alert("分数没有超过最后一名");
+            return;
+        }
+        if(bestRecord.scores==rank[rank.length-1].scores&&bestRecord.duration>rank[rank.length-1].duration)
+        {
+            alert("用时超过最后一名");
+            return;
+        }
+
+        AV.Cloud.run('addRecord',bestRecord).then(
+        function(data)
+        {
+            //alert("提交成功");
+            console.log(data);
+           // window.location.reload();
+        },
+        function(error)
+        {
+            alert("由于网络原因提交失败");
+        })
+    }
+    function GetBestRecord()
+    {
+        if (localStorage.getItem("bestScores") && localStorage.getItem("bestDuration"))
+        {
+            return {
+                scores:parseInt(localStorage.getItem("bestScores")),
+                duration:parseInt(localStorage.getItem("bestDuration"))
+            }
+        }
+    }
+
+    function updateTable(records)
+    {
+        let table = document.getElementById("records");
+        let rows = table.rows;
+        for (let i = 1; i <= records.length; i++)
+        {
+            let row = table.insertRow(rows.length);
+            row.insertCell(0).innerHTML = records[i - 1].updatedAt;
+            row.insertCell(0).innerHTML = records[i - 1].comment;
+            row.insertCell(0).innerHTML = records[i - 1].duration;
+            row.insertCell(0).innerHTML = records[i - 1].scores;
+            row.insertCell(0).innerHTML = i;
+        }
+    }
+
+    AV.init(
+    {
+        appId: "6Wp9wY2U2q4JOI0D2ruVtUg4-MdYXbMMI",
+        appKey: "1e7Cqw4sPQpcIK7s6zYMvxyn"
+    });
+
+    localStorage.setItem('debug', 'leancloud*');
+
+    let bestRecord = GetBestRecord();
+    
+    AV.Cloud.run('getRecords').then(
+        function(data)
+        {
+            updateTable(data.rank);
+            document.getElementById("submit").addEventListener("click",
+            submit.bind(this,data.rank));
+        },
+        function(error)
+        {
+            alert("获取排名失败");
+        })
+
+</script>
+</html>
