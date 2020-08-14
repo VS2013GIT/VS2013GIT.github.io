@@ -47,13 +47,17 @@
             alert("用时超过最后一名");
             return;
         }
-
+        if(localStorage.getItem("submitted")=="true")
+        {
+            alert("你已经提交");
+            return;
+        }
         AV.Cloud.run('addRecord',bestRecord).then(
         function(data)
         {
-            //alert("提交成功");
-            console.log(data);
-           // window.location.reload();
+            alert("提交成功");
+            localStorage.setItem("submitted","true");
+            window.location.reload();
         },
         function(error)
         {

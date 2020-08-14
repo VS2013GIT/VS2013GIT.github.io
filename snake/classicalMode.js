@@ -23,8 +23,6 @@ function GameDatas()
     this.scores=0;
     this.duration=0;
     this.flashTime=200;
-    this.bestDiv= document.getElementById("best");
-    this.scoresDiv=document.getElementById("scores");
     this.durationDiv=document.getElementById("duration");
     this.flashTimeDiv=document.getElementById("flashTime");
     
@@ -42,7 +40,6 @@ function GameDatas()
 }
 GameDatas.prototype.updateHUD=function()
 {
-    this.bestDiv.innerHTML=this.bestScores+"/"+this.bestDuration+"ms";
     this.scoresDiv.innerHTML=this.scores;
     this.durationDiv.innerHTML=this.duration+"ms";
     this.flashTimeDiv.innerHTML=this.flashTime+"ms";
@@ -53,8 +50,8 @@ GameDatas.prototype.saveBestRecord=function()
     {
         localStorage.setItem("bestScores",this.scores);
         localStorage.setItem("bestDuration",this.duration);
+        localStorage.setItem("submitted","flase");
     }
-
 }
 
 GameArea.gameAreaDiv.innerHTML="";
