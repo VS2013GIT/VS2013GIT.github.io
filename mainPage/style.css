@@ -22,7 +22,30 @@ body,html{
     padding: 10px;
 }
 
-#gap {
+#picture
+{
+    display: grid;
+    grid-template-columns:50% 50%;
+}
+#picture div{
+    height: 180px;
+}
+#picture .first
+{
+    background-image: url(images/cat1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
+#picture .second
+{
+    background-image: url(images/cat2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
+
+.gap {
     height: 10px;
 }
 
@@ -60,7 +83,7 @@ body,html{
 }
 
 #screenLine{
-    position: absolute;
+    position: fixed;
     left:80%;
     top:0%;
     width:1px;

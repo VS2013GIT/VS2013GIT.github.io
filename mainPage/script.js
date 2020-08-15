@@ -1,3 +1,7 @@
+window.addEventListener('pageshow', function (event) {
+    //event.persisted属性为true时，表示当前文档是从往返缓存中获取
+      if (event.persisted) location.reload();
+     });
 
 function getCookie(name) 
 {                   
@@ -18,12 +22,12 @@ if(getCookie("screenLine")!=null)
     document.body.appendChild(screenLine);
 }
 
-document.getElementById("content4").addEventListener("click",function()
+document.getElementById("content5").addEventListener("click",function()
 {
     document.location.href="../screenTest/screenTest.html";
    
 })
-document.getElementById("content3").addEventListener("click",function()
+document.getElementById("content4").addEventListener("click",function()
 {
     document.location.href="../astronomia/index.html";
    
@@ -31,6 +35,11 @@ document.getElementById("content3").addEventListener("click",function()
 document.getElementById("content2").addEventListener("click",function()
 {
     document.location.href="../snake/snakePhone.html";
+   
+})
+document.getElementById("content3").addEventListener("click",function()
+{
+    document.location.href="../aCat/index.html";
    
 })
 
@@ -56,6 +65,6 @@ function print()
     y=(R+r)*Math.sin(theta)-l/r*Math.sin((R/r+1)*theta);
     draw.lineTo(x,y);
     draw.stroke();
-    if(theta<2*Math.PI)return setTimeout(print,800);
+    if(theta<2*Math.PI)return setTimeout(print,1200);
 }
 print();

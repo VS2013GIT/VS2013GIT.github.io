@@ -10,5 +10,5 @@ document.getElementsByClassName("mode")[0].getElementsByClassName("classical")[0
 document.getElementsByClassName("mode")[0].getElementsByClassName("rank")[0].addEventListener("click",
 ()=>
 {
-    window.location.href="rank.html";
+    window.location.href="rank/rank.html";
 });
