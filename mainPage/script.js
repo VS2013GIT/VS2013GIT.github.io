@@ -15,6 +15,7 @@ function getCookie(name)
     return null;
 }
 
+
 if(getCookie("screenLine")!=null)
 {
     let screenLine=document.createElement("div");

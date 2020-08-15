@@ -82,6 +82,16 @@ function updateTable(records)
         row.insertCell(0).innerHTML = i;
     }
 }
+window.addEventListener("load",function()
+{
+    let bestScores=document.getElementById("bestScores");
+    let bestDuration=document.getElementById("bestDuration");
+   if(localStorage.getItem("bestScores")&&localStorage.getItem("bestDuration"))
+    {
+        bestScores.innerHTML=localStorage.getItem("bestScores");
+        bestDuration.innerHTML=localStorage.getItem("bestDuration");
+    }
+})
 
 AV.init(
 {
